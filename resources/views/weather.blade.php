@@ -173,7 +173,7 @@
                 }
             @endphp
 
-            <div class="weather-container">
+            <div class="weather-container" id="results">
                 <div class="weather-main">
                     <h2>📍 {{ $weather['name'] }}, {{ $weather['sys']['country'] }}</h2>
                     <div class="temp-display">{{ round($weather['main']['temp']) }}°C</div>
@@ -329,6 +329,20 @@
             </div>
         </div>
     </footer>
+    @if (session('weather'))
+        <script>
+            // Scroll otomatis ke elemen dengan ID 'results'
+            window.onload = function() {
+                const resultElement = document.getElementById('results');
+                if (resultElement) {
+                    resultElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        </script>
+    @endif
+
 </body>
 
 </html>
